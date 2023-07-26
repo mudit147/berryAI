@@ -10,6 +10,7 @@ import {
 import { Montserrat } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const montserrat = Montserrat({
   weight: '600',
@@ -26,7 +27,7 @@ const routes = [
   {
     lable: 'Chatbot',
     icon: MessageSquare,
-    href: '/Chatbot',
+    href: '/chatbot',
     color: 'text-pink-500',
   },
   {
@@ -38,14 +39,14 @@ const routes = [
   {
     lable: 'Settings',
     icon: Settings,
-    href: '/Settings',
-    color: 'text-black',
+    href: '/settings',
+    color: 'text-slate-200',
   },
 ];
-
 const Sidebar = () => {
+  const pathname = usePathname();
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full bg-slate-300 text-white">
+    <div className="space-y-4 py-4 flex flex-col h-full bg-slate-800 text-white">
       <div className="px-3 py-2 flex-1">
         <Link
           href="/dashboard"
@@ -56,7 +57,7 @@ const Sidebar = () => {
           </div>
           <h1
             className={cn(
-              'text-slate-900 font-bold',
+              'text-white font-bold',
               montserrat.className
             )}
           >
@@ -68,7 +69,12 @@ const Sidebar = () => {
             <Link
               href={route.href}
               key={route.href}
-              className="text-slate-900 group flex p-3 w-full justify-start font-medium hover:bg-slate-900/10 rouded-lg transition"
+              className={cn(
+                'text-sm group flex p-3 w-full justify-start font-medium hover:bg-white hover:bg-slate-100/10 rouded-lg transition',
+                pathname === route.href
+                  ? 'text-white bg-white/10'
+                  : 'text-zinc-300'
+              )}
             >
               <div className="flex items-center flex-1">
                 <route.icon
