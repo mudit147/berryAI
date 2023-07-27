@@ -31,7 +31,7 @@ const routes = [
     color: 'text-pink-500',
   },
   {
-    lable: 'code',
+    lable: 'Code',
     icon: Code2,
     href: '/code',
     color: 'text-white-500',
